@@ -11,6 +11,21 @@
 - `data/national_population_projections_census_2012.csv` is generated from here [here](https://www.census.gov/data/tables/2012/demo/popproj/2012-summary-tables.html). We concatenate the "Population" columns of the Low Series, Middle Series, and High Series of Table 1. Projections of the Population and Components of Change for the United States: 2015 to 2060.
 
 
+### Digital Coast processing
+
+(NEED GDAL)
+
+- Download and unzip all "Sea Level Rise" data from (here)[https://coast.noaa.gov/slrdata/] into `data/raw/digital_coast/`. For convinience, see `data/raw/digital_coast/url_list.txt` for a list of files to download. Unzipped, this data will be ~110GB on disk.
+
+
+
+- Merge all rasterized polygons with `gdal_merge.py -o 2ft.tif -n -1 -a_nodata -1 -co COMPRESS=DEFLATE -co PREDICTOR=1 -co TILED=NO -co NUM_THREADS=ALL_CPUS /home/caleb/Dropbox/code/migration_slr/data/digital_coast/slr_2ft/*.tif`
+- We have three rasters for each level of sea level rise:
+  1. `{0-6}ft.tif`
+  2. `{0-6}ft_masked.tif`
+  3. `{0-6}ft_masked_union.tif`
+
+
 TODO
 - Explain what `data/raw/cph-2-1-1.pdf` is and how we go from that to `data/intermediate/Population and Housing Units: 1940 to 1990.txt`
   - `data/raw/cph-2-1-1.pdf` comes from [here](https://www.census.gov/data/tables/1993/dec/cph-2-1-1.html).
