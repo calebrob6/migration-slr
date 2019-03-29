@@ -1,2 +1,4 @@
+.ipynb_checkpoints/
+*.pyc
 data/processed/
 data/intermediate/Population and Housing Units: 1940 to 1990__intermediate.csv
