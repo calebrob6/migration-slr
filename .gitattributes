@@ -7,3 +7,6 @@ data/raw/R11628343.txt filter=lfs diff=lfs merge=lfs -text
 data/raw/R11633875.txt filter=lfs diff=lfs merge=lfs -text
 data/raw/R11628343_SL150.txt filter=lfs diff=lfs merge=lfs -text
 data/raw/R11633875_SL150.txt filter=lfs diff=lfs merge=lfs -text
+data/intermediate/Population[[:space:]]and[[:space:]]Housing[[:space:]]Units:[[:space:]]1940[[:space:]]to[[:space:]]1990.txt filter=lfs diff=lfs merge=lfs -text
+data/intermediate/Population[[:space:]]and[[:space:]]Housing[[:space:]]Units:[[:space:]]1940[[:space:]]to[[:space:]]1990__processed.csv filter=lfs diff=lfs merge=lfs -text
+data/state_fips.csv filter=lfs diff=lfs merge=lfs -text
