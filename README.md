@@ -8,6 +8,8 @@
 - `R11628343_SL150.txt` - ACS 2012 (5-Year Estimates) download from Social Explorer, see Codebook at `data/raw/R11628343.txt`
 
 
+- `data/national_population_projections_census_2012.csv` is generated from here [here](https://www.census.gov/data/tables/2012/demo/popproj/2012-summary-tables.html). We concatenate the "Population" columns of the Low Series, Middle Series, and High Series of Table 1. Projections of the Population and Components of Change for the United States: 2015 to 2060.
+
 
 TODO
 - Explain what `data/raw/cph-2-1-1.pdf` is and how we go from that to `data/intermediate/Population and Housing Units: 1940 to 1990.txt`
