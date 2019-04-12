@@ -2,7 +2,9 @@
 *.pyc
 
 data/raw/boundary_shapefiles/
-data/processed/boundary_shapefiles/
+
+data/processed/boundary_shapefiles
 data/processed/*.csv
+
 data/intermediate/Population and Housing Units: 1940 to 1990__intermediate.csv
 data/intermediate/digital_coast/
