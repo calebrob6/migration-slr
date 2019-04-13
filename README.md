@@ -11,6 +11,10 @@
 - `data/national_population_projections_census_2012.csv` is generated from here [here](https://www.census.gov/data/tables/2012/demo/popproj/2012-summary-tables.html). We concatenate the "Population" columns of the Low Series, Middle Series, and High Series of Table 1. Projections of the Population and Components of Change for the United States: 2015 to 2060.
 
 
+- `co-est00int-tot.csv` is from https://www2.census.gov/programs-surveys/popest/datasets/2000-2010/intercensal/county/co-est00int-tot.csv, and includes the 2000-2010 intercensal population estimates per county
+- `co-est2017-alldata.csv` is from https://www2.census.gov/programs-surveys/popest/datasets/2010-2017/counties/totals/co-est2017-alldata.csv and includes pre-censal population estimates based on the 2010 census
+ 
+
 ### Digital Coast processing
 
 (NEED GDAL)

@@ -3,6 +3,8 @@
 
 data/raw/boundary_shapefiles/
 
+data/processed/county_distance_matrix.npy
+data/processed/migration
 data/processed/boundary_shapefiles
 data/processed/*.csv
 

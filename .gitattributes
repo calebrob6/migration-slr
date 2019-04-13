@@ -54,3 +54,9 @@ data/raw/migration/county1314/countyinflow1314.csv filter=lfs diff=lfs merge=lfs
 data/raw/migration/county1314/countyoutflow1314.csv filter=lfs diff=lfs merge=lfs -text
 data/raw/migration/county1415/countyoutflow1415.csv filter=lfs diff=lfs merge=lfs -text
 data/raw/migration/county1415/countyinflow1415.csv filter=lfs diff=lfs merge=lfs -text
+data/raw/co-est00int-tot.csv filter=lfs diff=lfs merge=lfs -text
+data/raw/co-est2017-alldata.csv filter=lfs diff=lfs merge=lfs -text
+data/intermediate/boundary_shapefiles/cb_2015_us_county_500k.dbf filter=lfs diff=lfs merge=lfs -text
+data/intermediate/boundary_shapefiles/cb_2015_us_county_500k.prj filter=lfs diff=lfs merge=lfs -text
+data/intermediate/boundary_shapefiles/cb_2015_us_county_500k.shp filter=lfs diff=lfs merge=lfs -text
+data/intermediate/boundary_shapefiles/cb_2015_us_county_500k.shx filter=lfs diff=lfs merge=lfs -text

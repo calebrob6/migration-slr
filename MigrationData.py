@@ -8,6 +8,8 @@
 import os
 import csv
 
+import numpy as np
+
 def parse_row_04_08(line):
     ''' This method parses rows from the 2004-2008 IRS migration data.
     
@@ -36,7 +38,7 @@ def load_file_04_08(fn):
 
     records = []
 
-    f = open(fn,'r')
+    f = open(fn, 'r', encoding='ISO-8859-1')
     for line in f:
         line = line.strip()
         if line!='':
@@ -62,7 +64,7 @@ def load_file_08_11(fn):
 
     records = []
 
-    f = open(fn,'r')
+    f = open(fn, 'r', encoding='ISO-8859-1')
     reader = csv.DictReader(f)
     for row in reader:
         val = int(row['Exmpt_Num'])
@@ -86,7 +88,7 @@ def load_file_11_15(fn):
 
     records = []
 
-    f = open(fn,'r')
+    f = open(fn, 'r', encoding='ISO-8859-1')
     reader = csv.DictReader(f)
     for row in reader:
         val = int(row['n2'])
@@ -147,7 +149,7 @@ class IRSMigrationData(object):
         out_records = None
         if 2004<=year<2008:
             in_records = load_file_04_08(incoming_fn)
-            out_records = loadFile04_08(outgoing_fn)
+            out_records = load_file_04_08(outgoing_fn)
         elif 2008<=year<2011: 
             in_records = load_file_08_11(incoming_fn)
             out_records = load_file_08_11(outgoing_fn)
@@ -171,7 +173,7 @@ class IRSMigrationData(object):
         county_fips_to_idx = {fips:i for i, fips in enumerate(county_fips)}
         n = len(county_fips)
 
-        migration_matrix = np.zeros((n,n), dtype=np.uint16)
+        migration_matrix = np.zeros((n,n), dtype=np.int32)
         
         in_records, out_records = self.get_raw_data(year)
 
@@ -179,11 +181,13 @@ class IRSMigrationData(object):
             if 2004<=year<2008: # the 2004 - 2008 data has this backwards
                 origin, destination = destination, origin
             
-            origin_idx = county_fips_to_idx[origin] 
-            destination_idx = county_fips_to_idx[destination]
-
             if origin in county_set and destination in county_set:
-                migration_matrix[origin_idx, destination_idx] = val
+
+                origin_idx = county_fips_to_idx[origin] 
+                destination_idx = county_fips_to_idx[destination]
+
+                if origin in county_set and destination in county_set:
+                    migration_matrix[origin_idx, destination_idx] = val
 
         repeats = 0
         discrepancies = 0
@@ -201,7 +205,7 @@ class IRSMigrationData(object):
         
         # Sanity check, there should not be any u,v in the in_records that contradict with records from out_records
         if verbose:
-            print("Found %d repeats" % (repeats))
-            print("Error of %d migrants" % (discrepancies))
+            print('Found %d repeats' % (repeats))
+            print('Error of %d migrants' % (discrepancies))
 
         return migration_matrix
