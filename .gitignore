@@ -10,3 +10,8 @@ data/processed/*.csv
 
 data/intermediate/Population and Housing Units: 1940 to 1990__intermediate.csv
 data/intermediate/digital_coast/
+
+output/
+
+sync_up.sh
+files_not_to_sync.txt
