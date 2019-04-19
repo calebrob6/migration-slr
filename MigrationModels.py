@@ -27,23 +27,28 @@ import numpy as np
 def productionFunction(population, P, beta=0.03):
     return P * (population*beta)
 
+def row_normalize(P):
+    assert len(P.shape) == 2
+    return P / P.sum(axis=1, keepdims=True)
+
 #-----------------------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------------------
-def extendedRadiationModel(origins, destinations, s, alpha, rowNormalize=True, slowMode=False):
+def extendedRadiationModel(origins, destinations, s, alpha, slowMode=False):
     assert len(origins.shape) == 2 and origins.shape[1] == 1, "`origins` and `destinations` must be 2D with a single column"
     assert len(destinations.shape) == 2 and destinations.shape[1] == 1, "`origins` and `destinations` must be 2D with a single column"
-    assert origins.shape[0] == destinations.shape[0], "`origins` and `destinations` must be the same shape"
 
     n = origins.shape[0]
+    m = destinations.shape[0]
 
-    assert len(s.shape) == 2 and s.shape[0] == n and s.shape[1] == n, "`s` must be a square matrix with same length/width as the origin and destination features"
+    assert len(s.shape) == 2 and s.shape[0] == n and s.shape[1] == m, "`s` must be a square matrix with same length/width as the origin and destination features"
 
     origins = origins.astype(np.float)
-    P = np.zeros((n,n), dtype=float)
+    destinations = destinations.astype(np.float)
+    P = np.zeros((n,m), dtype=float)
 
     if slowMode:
         for i in range(n):
-            for j in range(n):
+            for j in range(m):
                 numerator = ((origins[i] + destinations[j] + s[i,j])**alpha - (origins[i] + s[i,j])**alpha) * (origins[i]**alpha + 1)
                 denominator = ((origins[i] + s[i,j])**alpha + 1) * ((origins[i] + destinations[j] + s[i,j])**alpha + 1)
                 P[i,j] = numerator/denominator
@@ -52,13 +57,6 @@ def extendedRadiationModel(origins, destinations, s, alpha, rowNormalize=True, s
         denominator = ((s+origins)**alpha + 1) * ((s + origins  + destinations.T)**alpha + 1)
         P = np.divide(numerator,denominator)
 
-    np.fill_diagonal(P, 0.0)
-
-    # do row normalization, i.e. make each row sum to 1
-    if rowNormalize: 
-        rowSums = np.sum(P,axis=1).reshape(-1,1)
-        P = P/rowSums
-
     P[np.isnan(P) | np.isinf(P)] = 0.0
     assert not np.any(np.isnan(P))
     assert not np.any(np.isinf(P))
@@ -67,21 +65,22 @@ def extendedRadiationModel(origins, destinations, s, alpha, rowNormalize=True, s
 
 #-----------------------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------------------
-def radiationModel(origins, destinations, s, rowNormalize=True, slowMode=False):
+def radiationModel(origins, destinations, s, slowMode=False):
     assert len(origins.shape) == 2 and origins.shape[1] == 1, "`origins` and `destinations` must be 2D with a single column"
     assert len(destinations.shape) == 2 and destinations.shape[1] == 1, "`origins` and `destinations` must be 2D with a single column"
-    assert origins.shape[0] == destinations.shape[0], "`origins` and `destinations` must be the same shape"
 
     n = origins.shape[0]
+    m = destinations.shape[0]
 
-    assert len(s.shape) == 2 and s.shape[0] == n and s.shape[1] == n, "`s` must be a square matrix with same length/width as the origin and destination features"
+    assert len(s.shape) == 2 and s.shape[0] == n and s.shape[1] == m, "`s` must be a square matrix with same length/width as the origin and destination features"
 
     origins = origins.astype(np.float)
-    P = np.zeros((n,n), dtype=float)
+    destinations = destinations.astype(np.float)
+    P = np.zeros((n,m), dtype=float)
 
     if slowMode:
         for i in range(n):
-            for j in range(n):
+            for j in range(m):
                 P[i,j] = (origins[i] * destinations[j]) / ((s[i,j] + origins[i]) * (s[i,j] + origins[i] + destinations[j]))
     else:
         numerator = np.dot(origins,destinations.T)
@@ -89,13 +88,6 @@ def radiationModel(origins, destinations, s, rowNormalize=True, slowMode=False):
         
         P = np.divide(numerator,denominator)
 
-    np.fill_diagonal(P, 0.0)
-
-    # do row normalization, i.e. make each row sum to 1
-    if rowNormalize:
-        rowSums = np.sum(P,axis=1).reshape(-1,1)
-        P = P/rowSums
-
     P[np.isnan(P) | np.isinf(P)] = 0.0
     assert not np.any(np.isnan(P))
     assert not np.any(np.isinf(P))
@@ -104,25 +96,26 @@ def radiationModel(origins, destinations, s, rowNormalize=True, slowMode=False):
 
 #-----------------------------------------------------------------------------------------------------------------------------------
 #-----------------------------------------------------------------------------------------------------------------------------------
-def gravityModel(origins, destinations, d, alpha, decay="power", rowNormalize=True, slowMode=False):
+def gravityModel(origins, destinations, d, alpha, decay="power", slowMode=False):
     assert len(origins.shape) == 2 and origins.shape[1] == 1, "`origins` and `destinations` must be 2D with a single column"
     assert len(destinations.shape) == 2 and destinations.shape[1] == 1, "`origins` and `destinations` must be 2D with a single column"
-    assert origins.shape[0] == destinations.shape[0], "`origins` and `destinations` must be the same shape"
 
     n = origins.shape[0]
+    m = destinations.shape[0]
 
-    assert len(d.shape) == 2 and d.shape[0] == n and d.shape[1] == n, "`d` must be a square matrix with same length/width as the origin and destination features"
+    assert len(d.shape) == 2 and d.shape[0] == n and d.shape[1] == m, "`d` must be a square matrix with same length/width as the origin and destination features"
 
     assert decay in ["power", "exponential"], "`decay` must be either 'power' or 'exponential'"
 
     origins = origins.astype(np.float)
+    destinations = destinations.astype(np.float)
     d = d.astype(np.float)
 
-    P = np.zeros((n,n), dtype=float)
+    P = np.zeros((n,m), dtype=float)
 
     if slowMode:
         for i in range(n):
-            for j in range(n):
+            for j in range(m):
                 if i!=j: # on the diagonal the distance matrix will be zero, so we ignore these
                     if decay=="power":
                         P[i,j] = (origins[i] * destinations[j]) / (d[i,j]**alpha)
@@ -140,13 +133,6 @@ def gravityModel(origins, destinations, d, alpha, decay="power", rowNormalize=Tr
         denominator[mask]=1.0 # set the 0's to 1.0, avoiding the divide by 0
         P = np.divide(numerator,denominator)
         P[mask] = 0.0 # set the results that would have been divided by 0, to 0
-
-    np.fill_diagonal(P, 0.0)
-
-     # do row normalization, i.e. make each row sum to 1
-    if rowNormalize:
-        rowSums = np.sum(P,axis=1).reshape(-1,1)
-        P = P/rowSums
 
     P[np.isnan(P) | np.isinf(P)] = 0.0
     assert not np.any(np.isnan(P))
