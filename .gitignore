@@ -21,7 +21,7 @@ output/figures/*.tiff
 output/figures_compressed/*.tiff
 output/dl_results/*.npy
 output/extrad_results/*.npy
-
+output/comparison*
 
 
 sync_up.sh

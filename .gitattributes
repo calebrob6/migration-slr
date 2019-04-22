@@ -60,3 +60,5 @@ data/intermediate/boundary_shapefiles/cb_2015_us_county_500k.dbf filter=lfs diff
 data/intermediate/boundary_shapefiles/cb_2015_us_county_500k.prj filter=lfs diff=lfs merge=lfs -text
 data/intermediate/boundary_shapefiles/cb_2015_us_county_500k.shp filter=lfs diff=lfs merge=lfs -text
 data/intermediate/boundary_shapefiles/cb_2015_us_county_500k.shx filter=lfs diff=lfs merge=lfs -text
+data/raw/nclimate3271-s2.xlsx filter=lfs diff=lfs merge=lfs -text
+data/intermediate/nclimate3271-s2.csv filter=lfs diff=lfs merge=lfs -text
