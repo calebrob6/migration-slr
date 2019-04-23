@@ -10,6 +10,11 @@ for f in output/figures/*.tiff; do
     fi;
 done
 
+for f in output/figures/*.tiff; do
+    fn=$(basename $f)
+    convert "output/figures/$fn" "output/figures_compressed_jpg/${fn%.*}.jpg"
+done
+
 #convert -density 300 -compress lzw -flatten Fig1.eps Fig1.tiff
 #convert -density 300 -compress lzw Fig2.pdf Fig2.tiff
 #convert -density 300 -compress lzw Fig3.pdf Fig3.tiff
