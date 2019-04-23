@@ -22,7 +22,8 @@ output/figures_compressed/*.tiff
 output/dl_results/*.npy
 output/extrad_results/*.npy
 output/comparison*
-
+output/*.h5
+output/*.txt
 
 sync_up.sh
 files_not_to_sync.txt
