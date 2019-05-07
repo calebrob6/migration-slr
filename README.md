@@ -2,9 +2,14 @@
 
 By: [Caleb Robinson](http://calebrob.com/), [Bistra Dilkina](https://viterbi.usc.edu/directory/faculty/Dilkina/Bistra), and [Juan Moreno-Cruz](https://www.morenocruz.org/).
 
+[Paper link](https://arxiv.org/abs/1904.10160)
+
+![Joint model design](images/Fig1.jpg)
+
+
 This reposoitory accompanies the manuscript, "Migration patterns under different scenarios of sea level rise", in submission to PLOS One. We study how the population distribution of the United States may change under different climate change scenarios by coupling human migration models with sea level rise models and population projections. As sea levels rise throughout the 21st century, large areas of previously habitable land will be directly innundated and/or exposed to more frequent extreme flooding events. This dynamic will displace vulnerable coastal populations, who will have to move to adapt to the climatic pressures. As we show, these migrants have the potential to signficantly shift the population landscape in the US by 2100.
 
-Our work extends prior work by Hauer et al. [1,2], by formalizing the coupling of migration and sea level rise models into a generalized *joint model* of migration under sea level rise, studying the impact of choice of migration model on the final results, and modeling different migration dynamics for affected vs. unaffected migrants.
+Our work extends prior work by Hauer et al. [[1,2](#references)], by formalizing the coupling of migration and sea level rise models into a generalized *joint model* of migration under sea level rise, studying the impact of choice of migration model on the final results, and modeling different migration dynamics for affected vs. unaffected migrants.
 
 Below, we detail the contents of the repository, and provide instructions for reproducing the paper results. (In progress)
 
