@@ -23,6 +23,13 @@ Below, we detail the contents of the repository, and provide instructions for re
 
 ### Data
 
+Data available for download [here](https://www.dropbox.com/s/32mdbjhr017azrw/migration-slr-data.zip?dl=1). Download and unzip the file over the current directory:
+```
+wget -O migration-slr-data.zip "https://www.dropbox.com/s/32mdbjhr017azrw/migration-slr-data.zip?dl=1"
+unzip migration-slr-data.zip
+rm migration-slr-data.zip
+```
+
 ## Reproducing results
 
 ### Reproducing population/SLR projections (Hauer et al. 2016)
