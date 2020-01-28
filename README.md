@@ -1,5 +1,8 @@
 # Migration patterns under different scenarios of sea level rise
 
+*NOTE*: Data available for download at (https://www.dropbox.com/s/32mdbjhr017azrw/migration-slr-data.zip?dl=0).
+
+
 By: [Caleb Robinson](http://calebrob.com/), [Bistra Dilkina](https://viterbi.usc.edu/directory/faculty/Dilkina/Bistra), and [Juan Moreno-Cruz](https://www.morenocruz.org/).
 
 [Paper link](https://arxiv.org/abs/1904.10160)
