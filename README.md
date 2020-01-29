@@ -1,6 +1,6 @@
 # Migration patterns under different scenarios of sea level rise
 
-*NOTE*: Data available for download [here](https://www.dropbox.com/s/32mdbjhr017azrw/migration-slr-data.zip?dl=0).
+*NOTE*: Data available for download [here](https://www.dropbox.com/s/0e89uzd2yepq9r4/migration-slr-data.zip?dl=0).
 
 
 By: [Caleb Robinson](http://calebrob.com/), [Bistra Dilkina](https://viterbi.usc.edu/directory/faculty/Dilkina/Bistra), and [Juan Moreno-Cruz](https://www.morenocruz.org/).
@@ -23,9 +23,9 @@ Below, we detail the contents of the repository, and provide instructions for re
 
 ### Data
 
-Data available for download [here](https://www.dropbox.com/s/32mdbjhr017azrw/migration-slr-data.zip?dl=1). Download and unzip the file over the current directory:
+Data available for download [here](https://www.dropbox.com/s/0e89uzd2yepq9r4/migration-slr-data.zip?dl=0). Download and unzip the file over the current directory:
 ```
-wget -O migration-slr-data.zip "https://www.dropbox.com/s/32mdbjhr017azrw/migration-slr-data.zip?dl=1"
+wget -O migration-slr-data.zip "https://www.dropbox.com/s/0e89uzd2yepq9r4/migration-slr-data.zip?dl=1"
 unzip migration-slr-data.zip
 rm migration-slr-data.zip
 ```
