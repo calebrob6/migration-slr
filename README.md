@@ -5,7 +5,7 @@
 
 By: [Caleb Robinson](http://calebrob.com/), [Bistra Dilkina](https://viterbi.usc.edu/directory/faculty/Dilkina/Bistra), and [Juan Moreno-Cruz](https://www.morenocruz.org/).
 
-[Paper link](https://arxiv.org/abs/1904.10160)
+[Paper link](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0227436)
 
 ![Joint model design](images/Fig1.jpg)
 
