@@ -1,6 +1,6 @@
 # Migration patterns under different scenarios of sea level rise
 
-*NOTE*: Data available for download [here](https://www.dropbox.com/s/0e89uzd2yepq9r4/migration-slr-data.zip?dl=0).
+*NOTE*: Data necessary for reproducing the results is available for download [here](https://www.dropbox.com/s/0e89uzd2yepq9r4/migration-slr-data.zip?dl=0). Processed results are available [here](https://github.com/calebrob6/migration-slr/tree/master/output/dl_results) and [here](https://github.com/calebrob6/migration-slr/tree/master/output/population_results).
 
 
 By: [Caleb Robinson](http://calebrob.com/), [Bistra Dilkina](https://viterbi.usc.edu/directory/faculty/Dilkina/Bistra), and [Juan Moreno-Cruz](https://www.morenocruz.org/).
