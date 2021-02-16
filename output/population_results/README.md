@@ -1,4 +1,4 @@
-The two files in this directory, `affected_population_medium.csv` and `affected_population_high.csv`, contain formatted results from interseceting the projected population with the Digital Coast SLR estimates.
+The two files in this directory, `affected_population_medium.csv` and `affected_population_high.csv`, contain formatted results from intersecting the projected population with the Digital Coast SLR estimates.
 
 In the medium scenario we assume 0.3m SLR at 2055, 0.6m at 2080 and 0.9m at 2100. In the high scenario we are assuming 0.3m SLR at 2042, 0.6m at 2059, 0.9m at 2071, 1.2m at 2082, 1.5m at 2091, and 1.8m at 2100.
 
